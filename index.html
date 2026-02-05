@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>کانال‌های یوتیوبِ فارسی برای آوا</title>
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.09);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 600px at 80% 10%, rgba(105, 170, 255, 0.18), transparent 60%),
+        radial-gradient(900px 500px at 20% 20%, rgba(255, 187, 92, 0.14), transparent 55%),
+        radial-gradient(900px 500px at 50% 100%, rgba(162, 255, 196, 0.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", "Helvetica Neue", sans-serif;
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    header{
+      padding: 28px 18px 10px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .title{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    h1{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: 0.2px;
+    }
+    .subtitle{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size: 14px;
+      max-width: 70ch;
+    }
+
+    .controls{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 200px 220px;
+      gap: 10px;
+    }
+    @media (max-width: 820px){
+      .controls{ grid-template-columns: 1fr; }
+    }
+    .control{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    input, select, button{
+      width:100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+    }
+    input::placeholder{ color: rgba(255,255,255,0.45); }
+    select{
+      appearance: none;
+      cursor:pointer;
+    }
+    .btnRow{
+      display:flex;
+      gap:10px;
+    }
+    .btn{
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      text-align:center;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      font-weight: 600;
+    }
+    .btn:hover{ transform: translateY(-1px); background: var(--card2); border-color: rgba(255,255,255,0.18); }
+
+    main{
+      max-width:1100px;
+      margin: 0 auto;
+      padding: 12px 18px 30px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 118px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.20);
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+    }
+    .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .emoji{
+      font-size: 26px;
+      line-height: 1;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+    }
+    .name{
+      margin:0;
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: 0.2px;
+    }
+    .meta{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.78);
+    }
+    .linkHint{
+      margin-top: 10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+    }
+    .url{
+      direction:ltr;
+      text-align:left;
+      max-width: 70%;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      opacity: 0.8;
+    }
+    .open{
+      font-weight:700;
+      opacity: 0.9;
+    }
+
+    footer{
+      max-width:1100px;
+      margin: 0 auto;
+      padding: 0 18px 26px;
+      color: rgba(255,255,255,0.55);
+      font-size: 12px;
+    }
+    .count{
+      margin-top: 10px;
+      color: rgba(255,255,255,0.65);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <div>
+        <h1>کارت‌های کانال‌های یوتیوبِ فارسی</h1>
+        <p class="subtitle">
+          یک فهرستِ تمیز و کلیک‌کردنی از کانال‌ها/فهرست‌پخش‌های فارسی، مناسب برای اشتراک‌گذاری.
+          (با جست‌وجو و مرتب‌سازی)
+        </p>
+      </div>
+      <div class="btnRow">
+        <button class="btn" id="copyLinksBtn" type="button">کپیِ همهٔ لینک‌ها</button>
+        <button class="btn" id="exportJsonBtn" type="button">خروجی JSON</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <input id="search" type="search" placeholder="جست‌وجو: نام، برچسب، انگلیسیِ کانال…" />
+      </div>
+
+      <div class="control">
+        <select id="tagFilter" aria-label="فیلتر بر اساس دسته">
+          <option value="همه">همهٔ دسته‌ها</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <select id="sort" aria-label="مرتب‌سازی">
+          <option value="default">مرتب‌سازی: پیش‌فرض</option>
+          <option value="fa-asc">نام فارسی: الف → ی</option>
+          <option value="fa-desc">نام فارسی: ی → الف</option>
+          <option value="type">نوع: کانال سپس فهرست‌پخش</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="count" id="count"></div>
+  </header>
+
+  <main>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer>
+    نکته: اگر می‌خواهی نام‌ها «کاملاً رسمی/استاندارد» باشند (مثلاً «شبکهٔ رشد» دقیقاً همین باشد)،
+    فقط بگو ترجیح می‌دهی نام‌ها «ترانویسی» باشند یا «ترجمه/معادل‌گذاری».
+  </footer>
+
+<script>
+  // Data extracted from your uploaded bookmarks HTML + lightly "cleaned" display names.
+  // If you want different Persian naming conventions, we can tighten these.
+  const items = [
+    {
+      fa: "طوطی (آموزشِ فارسی)",
+      en: "TOOTEE Persian",
+      url: "https://www.youtube.com/@TOOTEEPERSIAN/videos",
+      emoji: "🦜",
+      tags: ["آموزشی", "حروف/زبان"],
+      type: "کانال"
+    },
+    {
+      fa: "کتابرانه",
+      en: "ketabraneh",
+      url: "https://www.youtube.com/@ketabraneh6712",
+      emoji: "📖",
+      tags: ["کتاب", "قصه"],
+      type: "کانال"
+    },
+    {
+      fa: "کلاسِ اوّل (وحیده شنبدی)",
+      en: "kelase_aval",
+      url: "https://www.youtube.com/@kelase_aval/videos",
+      emoji: "✏️",
+      tags: ["آموزشی", "مدرسه"],
+      type: "کانال"
+    },
+    {
+      fa: "کتابانو",
+      en: "Ketabanoo",
+      url: "https://www.youtube.com/@Ketabanoo/videos",
+      emoji: "📚",
+      tags: ["کتاب", "کودک"],
+      type: "کانال"
+    },
+    {
+      fa: "فارسی‌لَند",
+      en: "FarsiLand",
+      url: "https://www.youtube.com/@kidsfarsiland/videos",
+      emoji: "🎠",
+      tags: ["کودک", "سرگرمی"],
+      type: "کانال"
+    },
+    {
+      fa: "شبکهٔ رشد",
+      en: "ROSHD CHANNEL",
+      url: "https://www.youtube.com/@ROSHDCHANNEL/videos",
+      emoji: "🏫",
+      tags: ["آموزشی", "مدرسه"],
+      type: "کانال"
+    },
+    {
+      fa: "کتابِ کُدیله",
+      en: "ketab codile",
+      url: "https://www.youtube.com/@ketabcodile",
+      emoji: "🐊",
+      tags: ["کتاب", "قصه"],
+      type: "کانال"
+    },
+    {
+      fa: "داستان‌های صوتیِ کودکان (گزیده)",
+      en: "Kids Audiobooks Playlist",
+      url: "https://www.youtube.com/playlist?list=PLVJBJT-Mqe4Ez9s4whzl7K1HTehC78O3V",
+      emoji: "🎧",
+      tags: ["کتاب صوتی", "قصه"],
+      type: "فهرست‌پخش"
+    },
+    {
+      fa: "نازلی",
+      en: "Nazlihb",
+      url: "https://www.youtube.com/@Nazlihb/videos",
+      emoji: "🧸",
+      tags: ["کودک", "قصه/ترانه"],
+      type: "کانال"
+    },
+    {
+      fa: "فیکولند",
+      en: "Ficoland",
+      url: "https://www.youtube.com/@Ficoland_channel/videos",
+      emoji: "🧩",
+      tags: ["کودک", "یادگیری"],
+      type: "کانال"
+    },
+    {
+      fa: "سودابه سالم",
+      en: "Soudabeh Salem - Topic",
+      url: "https://www.youtube.com/channel/UCqPhXv13j-GNjofI3883TOQ",
+      emoji: "🎼",
+      tags: ["موسیقی", "کودک"],
+      type: "کانال"
+    },
+    {
+      fa: "کتاب صوتیِ کودکانه با تصویرسازیِ عالی",
+      en: "Illustrated Kids Audiobooks Playlist",
+      url: "https://www.youtube.com/playlist?list=PLGY8l97J7A3W4tiWQCLTfy1uZeeBEBGP0",
+      emoji: "🖼️",
+      tags: ["کتاب صوتی", "تصویرسازی"],
+      type: "فهرست‌پخش"
+    }
+  ];
+
+  const grid = document.getElementById("grid");
+  const searchEl = document.getElementById("search");
+  const tagFilterEl = document.getElementById("tagFilter");
+  const sortEl = document.getElementById("sort");
+  const countEl = document.getElementById("count");
+
+  function uniq(arr){ return [...new Set(arr)]; }
+
+  function buildTagFilter(){
+    const allTags = uniq(items.flatMap(x => x.tags));
+    allTags.sort((a,b)=> a.localeCompare(b, "fa"));
+    for (const t of allTags){
+      const opt = document.createElement("option");
+      opt.value = t;
+      opt.textContent = t;
+      tagFilterEl.appendChild(opt);
+    }
+  }
+
+  function normalize(s){
+    return (s || "")
+      .toString()
+      .trim()
+      .replace(/\u200c/g, "") // remove ZWNJ for looser matching
+      .toLowerCase();
+  }
+
+  function applySort(list){
+    const mode = sortEl.value;
+    const copy = [...list];
+
+    if (mode === "fa-asc"){
+      copy.sort((a,b)=> a.fa.localeCompare(b.fa, "fa"));
+    } else if (mode === "fa-desc"){
+      copy.sort((a,b)=> b.fa.localeCompare(a.fa, "fa"));
+    } else if (mode === "type"){
+      const rank = (t)=> t === "کانال" ? 0 : 1;
+      copy.sort((a,b)=> rank(a.type) - rank(b.type) || a.fa.localeCompare(b.fa, "fa"));
+    }
+    // default: keep original order
+    return copy;
+  }
+
+  function render(){
+    const q = normalize(searchEl.value);
+    const tag = tagFilterEl.value;
+
+    let filtered = items.filter(it => {
+      const blob = normalize([it.fa, it.en, it.type, ...(it.tags||[])].join(" "));
+      const matchQuery = !q || blob.includes(q);
+      const matchTag = (tag === "همه") || (it.tags || []).includes(tag);
+      return matchQuery && matchTag;
+    });
+
+    filtered = applySort(filtered);
+
+    grid.innerHTML = "";
+    for (const it of filtered){
+      const a = document.createElement("a");
+      a.href = it.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.className = "card";
+      a.setAttribute("aria-label", `باز کردن ${it.fa}`);
+
+      a.innerHTML = `
+        <div class="top">
+          <div>
+            <h3 class="name">${escapeHtml(it.fa)}</h3>
+            <div class="meta">
+              <span class="pill">${escapeHtml(it.type)}</span>
+              ${it.tags.map(t => `<span class="pill">${escapeHtml(t)}</span>`).join("")}
+            </div>
+          </div>
+          <div class="emoji" aria-hidden="true">${it.emoji}</div>
+        </div>
+        <div class="linkHint">
+          <span class="open">باز کردن ↗</span>
+          <span class="url">${escapeHtml(it.url)}</span>
+        </div>
+      `;
+      grid.appendChild(a);
+    }
+
+    countEl.textContent = `نمایش: ${filtered.length} مورد از ${items.length}`;
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  // Buttons
+  document.getElementById("copyLinksBtn").addEventListener("click", async () => {
+    const lines = items.map(x => `${x.emoji} ${x.fa} — ${x.url}`);
+    try{
+      await navigator.clipboard.writeText(lines.join("\n"));
+      alert("همهٔ لینک‌ها کپی شد ✅");
+    }catch(e){
+      // fallback
+      const ta = document.createElement("textarea");
+      ta.value = lines.join("\n");
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+      alert("همهٔ لینک‌ها کپی شد ✅");
+    }
+  });
+
+  document.getElementById("exportJsonBtn").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(items, null, 2)], {type:"application/json;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ava-farsi-youtube-cards.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // Events
+  searchEl.addEventListener("input", render);
+  tagFilterEl.addEventListener("change", render);
+  sortEl.addEventListener("change", render);
+
+  buildTagFilter();
+  render();
+</script>
+</body>
+</html>
